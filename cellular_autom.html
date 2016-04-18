@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+  cellular_autom.html
+  Ann Tupek
+
+  Requires processing.min.js, cellular_autom.pde
+-->
+<html>
+<head>
+<meta charset="utf-8">
+<title>Cellular Automata</title>
+</head>
+<body>
+<h1>Cellular Automata</h1>
+<p>
+Conway's Game of Life
+<p>
+Click inside the canvas to select starting cells and then click run.
+<p>
+<button onclick="pCall('can1','reset_sim')">Reset</button>
+<button onclick="pCall('can1','run')">Run</button>
+<button onclick="pCall('can1','pause')">Pause/Resume</button>
+<p>
+Or select a pre-loaded configuration:
+<p>
+<button onclick="pCall('can1','simple_oscilators')">Simple Oscilators</button>
+<button onclick="pCall('can1','pulsar')">Pulsar</button>
+<button onclick="pCall('can1','pentadecathlon')">Pentadecathlon</button>
+<button onclick="pCall('can1','spaceships')">Spaceships</button>
+<button onclick="pCall('can1','gosper_glider_gun')">Gosper Glider Gun</button>
+<button onclick="pCall('can1','diehard')">Diehard</button>
+<button onclick="pCall('can1','acorn')">Acorn</button>
+<button onclick="pCall('can1','cross')">Cross</button>
+<button onclick="pCall('can1','random_sim')">Random</button>
+<p>
+<canvas width="1000" height="500"
+  style="border: 3px solid gray"
+  id="can1"
+  data-processing-sources="cellular_autom.pde"
+></canvas>
+<script type="text/javascript">
+// pCall
+// Call Processing function from given canvas, with given function name,
+// passing no arguments.
+function pCall(canvasid, funcname, arg)
+{
+    var processingInstance = Processing.getInstanceById(canvasid);
+    if (!processingInstance)
+    {
+        alert('No Processing instance found, canvas id: ' + canvasid);
+        return;
+    }
+    var func = processingInstance[funcname];
+    func(arg);
+}
+</script>
+<script type="text/javascript" src="processing.min.js"></script>
+</body>
+</html>
+
